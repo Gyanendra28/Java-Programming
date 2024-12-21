@@ -2,8 +2,9 @@ public class StudentClass {
     // Attributes
     public int id;
     public String name;
-    public int age;
+    private int age;
     public int numberOfSubjects;
+    private String GF;
 
     // Default Constructor : attributes -> garbage
     public StudentClass() {
@@ -11,12 +12,13 @@ public class StudentClass {
     }
 
     // Parameterized Constructor
-    public StudentClass(int id, String name, int age, int numberOfSubjects) {
+    public StudentClass(int id, String name, int age, int numberOfSubjects, String GF) {
         System.out.println("StudentClass parameterized constructor called");
         this.id = id;
         this.name = name;
         this.age = age;
         this.numberOfSubjects = numberOfSubjects;
+        this.GF = GF;
     }
 
     // Copy Constructor
@@ -37,5 +39,20 @@ public class StudentClass {
     }
     public void bunk() {
         System.out.println(name + " is bunking");
-    }    
+    }
+    public void chatting() {
+        System.out.println(name + " is chatting with " + GF);
+    }
+
+    // Getters and Setters
+    public int getAge() {
+        return this.age;
+    }
+    public void setAge(int a) {
+        // Extra layer of authentication
+        if(age<100)
+            this.age = a;
+        else
+            return;
+    }
 } 
