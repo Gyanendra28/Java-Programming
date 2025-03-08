@@ -1,99 +1,39 @@
-package AbstractDesign;
-
-// abstract class Bird {
-//     abstract void fly();
-//     abstract void eat();
-
-//     public void sleep() {
-//         System.out.println("Bird is sleeping");
-//     }
-// }
-
-// class Nightingale extends Bird {
-//     @Override
-//     void fly() {
-//         System.out.println("Nightingale is flying");
-//     }
-
-//     @Override
-//     void eat() {
-//         System.out.println("Nightingale is eating");
-//     }
-// }
-
-// class Sparrow extends Bird {
-//     @Override
-//     void fly() {
-//         System.out.println("Sparrow is flying");
-//     }
-
-//     @Override
-//     void eat() {
-//         System.out.println("Sparrow is eating");
-//     }
-// }
+package ComparableAndComparatorInterface;
+import java.util.*;
 
 public class Main {
-    public static void doBirdStuff(Bird b) {
-        b.fly();
-        b.eat();
-        b.sleep();
-    }
     public static void main(String[] args) {
-        doBirdStuff(new Nightingale());
-        doBirdStuff(new Sparrow());
+        Integer arr[] = {5, 1, 7, 2, 8, 4};
+        Arrays.sort(arr, new ReverseComparator());
+        for(int a : arr) {
+            System.out.print(a + " ");
+        }
 
-        // Bird b = new Nightingale();
-        // b.fly();
-        // b.eat();
+        List<Student> students = new ArrayList<>(); 
+        students.add(new Student(21, "Gyanendra", 53));
+        students.add(new Student(23, "Radha", 57));
+        students.add(new Student(22, "Shivam", 69));
+        students.add(new Student(22, "Anuj", 51));
 
-        // b = new Sparrow();
-        // b.eat();
-        // b.fly();
+        // System.out.println(students);
 
-        // b.sleep();
-    }
-}
+        // Comparator
+        System.out.println("\nWeight sorting -");
+        // Collections.sort(students, new Comparator<Student>() {
+        //     @Override
+        //     public int compare(Student o1, Student o2) {
+        //         return o1.weight - o2.weight;
+        //     }
+        // });
 
-// Interface
-interface Bird {
-    void fly(); // Public
-    void eat();
+        // Collections.sort(students, new WeightComparator());
 
-    default void sleep() {
-        System.out.println("Bird is sleeping");
-    }
-}
+        Collections.sort(students, (o1, o2) -> o1.weight - o2.weight);
+        System.out.println(students);
 
-interface Walk {
-    void walk();
-}
-
-class Nightingale implements Bird, Walk {
-    @Override
-    public void fly() {
-        System.out.println("Nightingale is flying");
-    }
-
-    @Override
-    public void eat() {
-        System.out.println("Nightingale is eating");
-    }
-
-    @Override
-    public void walk() {
-        System.out.println("Nightingale is walking");
-    }
-}
-
-class Sparrow implements Bird {
-    @Override
-    public void fly() {
-        System.out.println("Sparrow is flying");
-    }
-    
-    @Override
-    public void eat() {
-        System.out.println("Sparrow is eating");
+        // Comparable
+        System.out.println("Age sorting -");
+        Collections.sort(students);
+        System.out.println(students);
     }
 }

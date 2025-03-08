@@ -85,6 +85,7 @@ public class CFM1 {
         System.out.println(list1);
 
         // clone()
+        @SuppressWarnings("unchecked")
         ArrayList<Integer> newList1 = (ArrayList<Integer>)list1.clone();
         System.out.println(newList1);
 
